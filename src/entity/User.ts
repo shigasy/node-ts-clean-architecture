@@ -24,4 +24,4 @@ const UserBusinessRule = {
   },
 };
 
-const a = new UserBusinessRule();
+export { User, UserBusinessRule };
