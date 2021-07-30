@@ -1,0 +1,18 @@
+import { User } from "@/entity/user";
+import { IUserRepository } from "@/interface_adapter/repository/user"
+
+export class FindUser {
+  private userRepository: IUserRepository
+
+  constructor(userRepository: IUserRepository) {
+    this.userRepository = userRepository
+  }
+
+  public getUser(id: number): Promise<User> {
+    return this.userRepository.find(id)
+  }
+
+  public getAllUsers(): Promise<User[]> {
+    return this.userRepository.findAll()
+  }
+}
