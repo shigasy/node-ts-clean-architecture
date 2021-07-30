@@ -1,1 +1,7 @@
-console.log("index");
+import express from "express";
+
+const app = express();
+
+app.listen(3000, (): void => {
+  console.log("listening on port 3000");
+});
