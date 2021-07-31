@@ -1,3 +1,5 @@
+import { StatusCode } from "../../../constant/ErrorCode";
+
 type Params = {
   id: string;
 };
@@ -20,7 +22,7 @@ export class FindUserRequset {
     if (Number.isNaN(numberId)) {
       throw new Error(
         JSON.stringify({
-          code: 999,
+          code: StatusCode.invalid,
           message: "不正なrequest idです",
         })
       );
