@@ -3,12 +3,28 @@ class User {
   private _name: string;
   private _age: number;
 
-  get name(): string {
+  get id() {
+    return this._id;
+  }
+
+  set id(id: number) {
+    this._id = id;
+  }
+
+  get name() {
     return this._name;
   }
 
   set name(name: string) {
-    this.name = name;
+    this._name = name;
+  }
+
+  get age() {
+    return this._age;
+  }
+
+  set age(age: number) {
+    this._age = age;
   }
 
   constructor(id: number, name: string, age: number) {

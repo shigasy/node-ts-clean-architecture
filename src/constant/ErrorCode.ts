@@ -10,4 +10,14 @@ const StatusCode = {
   undefined: UNDEFINED_CODE,
 } as const;
 
-export { StatusCode };
+type TExceptionCode =
+  | typeof StatusCode.invalid
+  | typeof StatusCode.exception
+  | typeof StatusCode.undefined;
+
+type TException = {
+  code: TExceptionCode;
+  message: string;
+};
+
+export { StatusCode, TException, TExceptionCode };

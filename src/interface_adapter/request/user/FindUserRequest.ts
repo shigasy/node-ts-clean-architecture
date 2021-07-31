@@ -16,7 +16,7 @@ export class FindUserRequset {
     this._id = validId;
   }
 
-  private validRequest(params: Params): number {
+  private validRequest(params: Params) {
     const id = params.id;
     const numberId = Number(id);
     if (Number.isNaN(numberId)) {
