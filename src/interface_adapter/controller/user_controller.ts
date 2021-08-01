@@ -1,7 +1,6 @@
 import { createUser } from "../../application/usecase/user/CreateUser";
 import { IUserRepository } from "../../application/repository/user";
 import { FindUser, DeleteUser } from "../../application/usecase/user";
-import { User } from "../../entity/user";
 import { UserRepositoryImpl } from "../database/Memory/UserRepositoryImpl";
 import { CreateUserRequest } from "../request/user/CreateUserRequest";
 import { FindUserRequest } from "../request/user/FindUserRequest";
