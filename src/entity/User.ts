@@ -36,7 +36,7 @@ class User {
 
 const UserBusinessRule = {
   isNameLengthValid(name: string): boolean {
-    return name.length > 0;
+    return name.length > 0 && name.length < 12;
   },
 };
 

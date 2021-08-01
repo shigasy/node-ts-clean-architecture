@@ -1,5 +1,5 @@
 import { IUserRepository } from "../../../application/repository/user";
-import { TCreateUserDTO } from "../../../application/repository/userDTO";
+import { TCreateUserDTO } from "../../../application/repository/UserDTO";
 import { User } from "../../../entity/user";
 
 export class createUser {

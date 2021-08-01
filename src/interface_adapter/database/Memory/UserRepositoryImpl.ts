@@ -2,15 +2,11 @@ import { StatusCode } from "../../../constant/ErrorCode";
 import { IUserRepository } from "../../../application/repository/user";
 import { User } from "../../../entity/user";
 import { DB } from "./MemoryDatabase";
-import { TCreateUserDTO } from "src/application/repository/userDTO";
+import { TCreateUserDTO } from "../../../application/repository/UserDTO";
 
 export class UserRepositoryImpl extends IUserRepository {
   constructor() {
     super();
-
-    const user1 = new User(1, "sample", 3);
-    const user2 = new User(2, "sample2", 20);
-    DB.users = [user1, user2];
   }
 
   async findAll(): Promise<User[]> {

@@ -1,5 +1,5 @@
 import { User } from "../../entity/user";
-import { TCreateUserDTO } from "./userDTO";
+import { TCreateUserDTO } from "./UserDTO";
 
 export abstract class IUserRepository {
   abstract findAll(): Promise<Array<User>>;
