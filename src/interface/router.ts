@@ -17,6 +17,11 @@ router.get(
   }
 );
 
+router.post("/users", async (req: express.Request, res: express.Response) => {
+  const result = await userController.create(req);
+  res.send(result);
+});
+
 router.delete(
   "/users/:id",
   async (req: express.Request, res: express.Response) => {

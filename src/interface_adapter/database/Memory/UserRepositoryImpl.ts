@@ -2,6 +2,7 @@ import { StatusCode } from "../../../constant/ErrorCode";
 import { IUserRepository } from "../../../application/repository/user";
 import { User } from "../../../entity/user";
 import { DB } from "./MemoryDatabase";
+import { TCreateUserDTO } from "src/application/repository/userDTO";
 
 export class UserRepositoryImpl extends IUserRepository {
   constructor() {
@@ -21,6 +22,15 @@ export class UserRepositoryImpl extends IUserRepository {
   async find(id: number): Promise<User | null> {
     const queryResult = DB.users.find((user) => user.id === id);
     return queryResult || null;
+  }
+
+  async create(user: TCreateUserDTO): Promise<User> {
+    const userIds = DB.users.map((user) => user.id);
+    const maxId = Math.max.apply(null, userIds);
+    const newId = maxId + 1;
+    const newUser = new User(newId, user.name, user.age);
+    DB.users = [...DB.users, newUser];
+    return newUser;
   }
 
   async delete(id: number): Promise<null> {
