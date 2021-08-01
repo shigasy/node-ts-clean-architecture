@@ -4,7 +4,7 @@ type Params = {
   id: string;
 };
 
-export class FindUserRequset {
+export class FindUserRequest {
   private _id: number;
 
   public get id(): number {

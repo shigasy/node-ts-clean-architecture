@@ -8,7 +8,7 @@ export class FindUser {
     this.userRepository = userRepository;
   }
 
-  public getUser(id: number): Promise<User> {
+  public getUser(id: number): Promise<User | null> {
     return this.userRepository.find(id);
   }
 

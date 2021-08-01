@@ -5,7 +5,8 @@ export const router = express.Router();
 const userController = new UserController();
 
 router.get("/users", async (req: express.Request, res: express.Response) => {
-  res.send("aa");
+  const result = await userController.index();
+  res.send(result);
 });
 
 router.get(
