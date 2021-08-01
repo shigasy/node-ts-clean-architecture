@@ -16,3 +16,11 @@ router.get(
     res.send(result);
   }
 );
+
+router.delete(
+  "/users/:id",
+  async (req: express.Request, res: express.Response) => {
+    const result = await userController.delete(req);
+    res.send(result);
+  }
+);

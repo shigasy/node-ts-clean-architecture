@@ -1,5 +1,5 @@
 import { IUserRepository } from "../../application/repository/user";
-import { FindUser } from "../../application/usecase/user";
+import { FindUser, DeleteUser } from "../../application/usecase/user";
 import { User } from "../../entity/user";
 import { UserRepositoryImpl } from "../database/Memory/UserRepositoryImpl";
 import { FindUserRequest } from "../request/user/FindUserRequest";
@@ -31,6 +31,17 @@ export class UserController {
         reqBody.id
       );
       return this.userSerializer.user(result);
+    } catch (error) {
+      return this.userSerializer.error(error);
+    }
+  }
+
+  async delete(req: any) {
+    try {
+      const reqId = Number(req.body.id);
+      const useCase = new DeleteUser(this.userRepository);
+      const _ = await useCase.deleteUser(reqId);
+      return this.userSerializer.delete();
     } catch (error) {
       return this.userSerializer.error(error);
     }
