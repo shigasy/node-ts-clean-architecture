@@ -1,8 +1,5 @@
-INSERT INTO Users
-    (id,name,age)
-VALUES
-    (1, 'test_user1', 12);
-INSERT INTO Users
-    (id,name,age)
-VALUES
-    (2, 'test_user2', 20);
+CREATE TABLE Users (
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    name VARCHAR(32) NOT NULL,
+    age INT NOT NULL
+);

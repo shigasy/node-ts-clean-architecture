@@ -19,7 +19,50 @@ export class MysqlConnection extends IDBConnection {
       timezone: process.env.TIMEZONE,
       insecureAuth: false,
     });
+
+    this.pool.getConnection((error, connection): void => {
+      if (error) {
+        console.error(error);
+        if (error.code === "PROTOCOL_CONNECTION_LOST") {
+          console.error("Database connection was closed.");
+        }
+        if (error.code === "ER_CON_COUNT_ERROR") {
+          console.error("Database has too many connections.");
+        }
+        if (error.code === "ECONNREFUSED") {
+          console.error("Database connection was refused.");
+        }
+      }
+
+      if (connection) connection.release();
+      return;
+    });
+    this.pool.on("connection", (): void => {
+      console.log("mysql connection create");
+    });
+
+    this.pool.on("release", (connection): void => {
+      console.log("Connection %d released", connection.threadId);
+    });
   }
 
-  public execute() {}
+  public async execute(query: string, params: number | string | null) {
+    return params !== null
+      ? new Promise((resolve, reject) => {
+          this.pool.query(query, params, (error, results, fields) => {
+            if (error) {
+              reject(error);
+            }
+            resolve(results);
+          });
+        })
+      : new Promise((resolve, reject) => {
+          this.pool.query(query, (error, results, fields) => {
+            if (error) {
+              reject(error);
+            }
+            resolve(results);
+          });
+        });
+  }
 }

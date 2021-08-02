@@ -6,9 +6,7 @@ export const router = express.Router();
 const dbConnection = new MysqlConnection();
 const userController = new UserController(dbConnection);
 
-console.log(dbConnection);
-
-router.get("/users", async (req: express.Request, res: express.Response) => {
+router.get("/users", async (_: express.Request, res: express.Response) => {
   const result = await userController.index();
   res.send(result);
 });
