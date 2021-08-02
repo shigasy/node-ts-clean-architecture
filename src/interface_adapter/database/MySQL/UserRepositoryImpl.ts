@@ -3,10 +3,11 @@ import { IUserRepository } from "../../../application/repository/user";
 import { IDBConnection } from "./IDBConnection";
 import { TCreateUserDTO } from "../../../application/repository/UserDTO";
 
-export class UserRepositoryImpl implements IUserRepository {
+export class UserRepositoryImpl extends IUserRepository {
   private connection: IDBConnection;
 
   constructor(connection: IDBConnection) {
+    super();
     this.connection = connection;
   }
 
