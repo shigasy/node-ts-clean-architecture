@@ -17,9 +17,9 @@ $ docker-compose down
 ```
 $ mysql -u user -p
 
-mysql> SHOW DATABASES
+mysql> SHOW DATABASES;
 
-mysql> USE test_database
+mysql> USE test_database;
 
 mysql> select * from Users;
 ```
