@@ -1,18 +1,21 @@
 import { createUser } from "../../application/usecase/user/CreateUser";
 import { IUserRepository } from "../../application/repository/user";
 import { FindUser, DeleteUser } from "../../application/usecase/user";
-import { UserRepositoryImpl } from "../database/Memory/UserRepositoryImpl";
+// import { UserRepositoryImpl } from "../database/Memory/UserRepositoryImpl";
+import { UserRepositoryImpl } from "../database/MySQL/UserRepositoryImpl";
 import { CreateUserRequest } from "../request/user/CreateUserRequest";
 import { FindUserRequest } from "../request/user/FindUserRequest";
 import { UserSerializer } from "../serializer/UserSerializer";
+import { IDBConnection } from "../database/MySQL/IDBConnection";
 
 export class UserController {
   private userSerializer: UserSerializer;
   private userRepository: IUserRepository;
 
-  constructor() {
+  constructor(dbConnection: IDBConnection) {
     this.userSerializer = new UserSerializer();
-    this.userRepository = new UserRepositoryImpl();
+    // this.userRepository = new UserRepositoryImpl();
+    this.userRepository = new UserRepositoryImpl(dbConnection);
   }
 
   async index() {
